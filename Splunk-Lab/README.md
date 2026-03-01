@@ -15,3 +15,12 @@ Security Insights & Visualizations
 HTTP Status Distribution: A pie chart showing the ratio of successful requests (200 OK) to client errors (404 Not Found), useful for spotting automated vulnerability scanners.
 
 Top 10 Source IPs: A statistics table identifying the most active external actors, allowing for quick identification of potential brute-force or DDoS sources.
+
+📚 Lessons Learned
+Default Configurations are Safeguards: I learned that Splunk's MAX_DAYS_AGO setting is a safety feature designed to prevent accidentally indexing "garbage" data with incorrect timestamps. Understanding how to safely override this is crucial for forensic investigations involving historical logs.
+
+Precision in Data Ingestion: My initial attempt failed because I didn't account for the timezone offset (%z) in the Apache log. This reinforced the importance of meticulous pattern matching when configuring SIEM tool source types.
+
+The Power of Naming Conventions: A small typo in my index name (apache-prob instead of prod) taught me that consistent naming conventions are vital for data discoverability in large-scale environments.
+
+Visualization as a Security Tool: Creating a Pie Chart for status codes showed me how quickly an analyst can spot "noise" or scanning activity without digging through thousands of raw events.
